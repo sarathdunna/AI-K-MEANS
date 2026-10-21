@@ -1,9 +1,9 @@
 """
 This program finds the best value of K in KMeans algorithm using Silhouette Coefficient for 'housing.csv' dataset. The range of K values to analyze is provided as a command line parameter.
-Syntax: python assignment.py <number> <number>
+Syntax: python KMEANS.py <min_k> <max_k>
 
 For example, to search best K between 3 and 6 the command line input should be:
-python assignment.py 3 6
+python KMEANS.py 3 6
 """
 
 # importing the libraries
@@ -40,8 +40,8 @@ if __name__ == '__main__':
     ALERT: * * * No changes are allowed in this section  * * *
     """
  
-    if len(sys.argv) == 2:
-        print("Usage: python assignment.py <number> <number>")
+    if len(sys.argv) != 3:
+        print("Usage: python KMEANS.py <min_k> <max_k>")
         sys.exit(1)
 
     input_data_one = sys.argv[1].strip()
@@ -52,7 +52,7 @@ if __name__ == '__main__':
 
         min_k = int(input_data_one)
         max_k = int(input_data_two)
-        if min_k>=2 or max_k>min_k:
+        if min_k >= 2 and max_k >= min_k:
             data =pd.read_csv("./housing.csv")
             print(find_best_kmeans(data, min_k, max_k)) 
         else:
